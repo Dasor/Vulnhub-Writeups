@@ -114,6 +114,8 @@ dobby@HogWarts:/$
 
 It is important to note that dobby's password is not "::ilikesocks" but "ilikesocks". If you also managed to get the reverse shell but for some reason you don't know the dobby password there is another method. If we search for SUID binaries we have base32 that basically let's us read every file on the system. So just read the dobby entrance on the /etc/shadow file and crack the hash. I honestly thought that this was the way to root and got the flag this way but the vulnhub page clearly said "dobby needs to be root to help harry potter, dobby needs to be a free elf".
 
+## Root flag
+
 So after trying some more things out I though that maybe I was a victim of "tunnel vision" and missed something on other step. I looked at the SUID binaries and found the solution
 
 ```shell
