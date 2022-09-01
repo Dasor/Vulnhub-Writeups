@@ -7,4 +7,4 @@
 | [Dobby](./writeups/dobby.md)                       | 23-08-22  | Very Easy                | Wordpress, Bruteforce , SUID                            |
 | [Bellatrix](./writeups/bellatrix.md)               | 25-08-22  | Very Easy                | LFI , log poisoning , RCE , Cracking hashes, SUID , CVE |
 
-# THIS REPO IS NOW ARCHIVED ALL NEW WRITEUPS WILL BE UPLOADED TO MY [GITHUB PAGES](dasor.github.io)
+# THIS REPO IS NOW ARCHIVED ALL NEW WRITEUPS WILL BE UPLOADED TO MY [GITHUB PAGES](https://dasor.github.io/)
